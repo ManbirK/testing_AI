@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .calculator {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 3px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Simple Calculator</h1>
+    <input type="text" id="num1" placeholder="Enter first number">
+    <input type="text" id="op" placeholder="Enter operator (+, -, *, /)">
+    <input type="text" id="num2" placeholder="Enter second number">
+    <button onclick="calculate()">Calculate</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculate() {
+      let num1 = parseFloat(document.getElementById("num1").value);
+      let op = document.getElementById("op").value;
+      let num2 = parseFloat(document.getElementById("num2").value);
+      let result = document.getElementById("result");
+
+      if (isNaN(num1) || isNaN(num2)) {
+        result.textContent = "Invalid input. Please enter numbers only.";
+        return;
+      }
+
+      if (op === "+") {
+        result.textContent = num1 + num2;
+      } else if (op === "-") {
+        result.textContent = num1 - num2;
+      } else if (op === "*") {
+        result.textContent = num1 * num2;
+      } else if (op === "/") {
+        if (num2 === 0) {
+          result.textContent = "Division by zero error!";
+        } else {
+          result.textContent = num1 / num2;
+        }
+      } else {
+        result.textContent = "Invalid operator!";
+      }
+    }
+  </script>
+</body>
+</html>
